@@ -1,0 +1,26 @@
+version: '3'
+  
+networks:
+    app-tier:
+        driver: bridge
+services:
+  app:
+    build: .
+    links:
+      - postgres
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - app-tier
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    networks:
+      - app-tier
+    ports:
+      - "5432:5432"
+  
