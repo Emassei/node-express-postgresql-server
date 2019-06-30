@@ -12,6 +12,6 @@ COPY .env /home/app
 
 COPY src /home/app/src
 
-RUN npm install && npm install --only=dev && npm update && export NODE_ENV=development
+RUN npm update && npm install && npm install --only-dev
 
 CMD ["npm", "start"] 
