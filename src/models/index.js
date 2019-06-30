@@ -1,8 +1,11 @@
 import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize('postgres','postgres','password',
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,  
   {
-    host: 'postgres',
+    host: process.env.DB_HOST,
     dialect: 'postgres'
   }
 );
